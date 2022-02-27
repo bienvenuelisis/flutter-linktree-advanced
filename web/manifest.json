@@ -1,0 +1,28 @@
+{
+    "name": "TheResilient Dev - LinkTree",
+    "short_name": "TheResilient Dev",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "A space where a put all my links. Feel free to join me on your favorite social media.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/me.jpg",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
