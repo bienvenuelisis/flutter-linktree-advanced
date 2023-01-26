@@ -124,6 +124,15 @@ const List<SocialLink> links = [
     color: Colors.teal,
   ),
   SocialLink(
+    name: "My Newsletter",
+    url: "https://bienvenuelisis.github.io/newsletter/",
+    icon: Icon(
+      FlutterIcons.newsletter_ent,
+      color: Colors.white,
+    ),
+    color: Colors.pink,
+  ),
+  SocialLink(
     name: "Email me",
     url: "mailto:agbavonbienvenu@gmail.com",
     icon: Icon(
@@ -265,13 +274,18 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    CircleAvatar(
-                      radius: 25,
-                      backgroundImage: AssetImage(imagesProfiles[meIndex]),
-                      backgroundColor: Colors.transparent,
+                    GestureDetector(
+                      onTap: () => launch(
+                        'https://drive.google.com/file/d/1HQ9PK91kLAAyah5q6X1H6dmzREeUJ0Sq/view?usp=share_link',
+                      ),
+                      child: CircleAvatar(
+                        radius: 25,
+                        backgroundImage: AssetImage(imagesProfiles[meIndex]),
+                        backgroundColor: Colors.transparent,
+                      ),
                     ),
                     SizedBox(height: size.height / 20),
-                    const Text(
+                    const SelectableText(
                       "Hi 👋, I'm Kokou AGBAVON",
                       style: TextStyle(
                         fontSize: 27,
@@ -280,8 +294,8 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     SizedBox(height: size.height / 20),
-                    RichText(
-                      text: const TextSpan(
+                    const SelectableText.rich(
+                      TextSpan(
                         text: "Software engineer, from Togo.",
                         style: TextStyle(
                           fontSize: 21,
