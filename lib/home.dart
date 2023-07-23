@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutter_icons_null_safety/flutter_icons_null_safety.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'responsive.dart';
@@ -49,8 +49,8 @@ const List<String> imagesBackground = [
 
 const List<String> imagesProfiles = [
   "assets/me/me.jpg",
-  "assets/me/me_smile.jpg",
-  "assets/me/me_aledjo.jpg",
+  "assets/me/me_code.jpg",
+  "assets/me/me_arrogant.jpg",
 ];
 
 class SocialLink {
@@ -63,10 +63,10 @@ class SocialLink {
   final Color color;
 
   const SocialLink({
-    @required this.name,
-    @required this.url,
-    @required this.icon,
-    @required this.color,
+    required this.name,
+    required this.url,
+    required this.icon,
+    required this.color,
   });
 
   Widget box(Size size, BuildContext context) => Card(
@@ -92,7 +92,7 @@ class SocialLink {
           ),
           child: InkWell(
             hoverColor: Colors.teal,
-            onTap: () => launch(url),
+            onTap: () => launchUrl(Uri.parse(url)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -115,7 +115,7 @@ class SocialLink {
 
 const List<SocialLink> links = [
   SocialLink(
-    name: "My Portofolio Website",
+    name: "My Portfolio Website",
     url: "https://bienvenuelisis.github.io/",
     icon: Icon(
       FlutterIcons.user_circle_faw5,
@@ -198,7 +198,7 @@ const List<SocialLink> links = [
 ];
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -252,7 +252,7 @@ class _HomePageState extends State<HomePage> {
                     imagesBackground[bgIndex],
                   ),
                   fit: BoxFit.cover,
-                  colorFilter: filtersMode[colorModeIndex] == null
+                  colorFilter: colorModeIndex > filtersMode.length - 1
                       ? null
                       : ColorFilter.mode(
                           Colors.teal,
@@ -275,8 +275,10 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     GestureDetector(
-                      onTap: () => launch(
-                        'https://drive.google.com/file/d/1HQ9PK91kLAAyah5q6X1H6dmzREeUJ0Sq/view?usp=share_link',
+                      onTap: () => launchUrl(
+                        Uri.parse(
+                          'https://drive.google.com/file/d/1HQ9PK91kLAAyah5q6X1H6dmzREeUJ0Sq/view?usp=share_link',
+                        ),
                       ),
                       child: CircleAvatar(
                         radius: 25,
@@ -354,10 +356,10 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {
                     reload();
                   },
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
+                    children: [
                       Icon(
                         FlutterIcons.magic_wand_sli,
                         color: Colors.white,
@@ -385,8 +387,10 @@ class _HomePageState extends State<HomePage> {
             bottom: 15,
             child: InkWell(
               onTap: () {
-                launch(
-                    "https://bienvenuelisis.github.io/news-noir-meilleur-jekyll/10-pays-visites-afrique/");
+                launchUrl(
+                  Uri.parse(
+                      "https://bienvenuelisis.github.io/news-noir-meilleur-jekyll/10-pays-visites-afrique/"),
+                );
               },
               child: Text(
                 descriptions[bgIndex],

@@ -1,6 +1,5 @@
 import 'package:elisistree/home.dart';
 import 'package:flutter/material.dart';
-
 import 'package:url_strategy/url_strategy.dart';
 
 void main() {
@@ -10,7 +9,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
